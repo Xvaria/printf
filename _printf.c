@@ -1,9 +1,9 @@
 #include "holberton.h"
 
 /**
- *
- *
- *
+ * _printf - print all types of data
+ * @format: list of arguments to print
+ * Return: t or -1
  */
 int _printf(const char *format, ...)
 {

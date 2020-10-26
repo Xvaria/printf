@@ -1,8 +1,9 @@
 #include "holberton.h"
 
 /**
- *
- *
+ * pc - write in standar output a char
+ * @c: character
+ * Return: 1
  */
 int pc(va_list c)
 {
@@ -14,8 +15,9 @@ int pc(va_list c)
 }
 
 /**
- *
- *
+ * ps - write in standar output a string
+ * @s: string
+ * Return: t
  */
 int ps(va_list s)
 {
@@ -23,16 +25,16 @@ int ps(va_list s)
 	char *st;
 
 	st = va_arg(s, char *);
-	if (!str)
-		str = "(null)";
+	if (!st)
+		st = "(null)";
 	for (t = 0; st[t]; t++)
 		write(1, &st[t], 1);
 	return (t);
 }
 
 /**
- *
- *
+ * pp - write in standar output a %
+ * Return: 1
  */
 int pp(void)
 {
