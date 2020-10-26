@@ -10,7 +10,6 @@ int _printf(const char *format, ...)
 	print_t func[] = {
 		{'c', pc},
 		{'s', ps},
-		{'%', pp},
 		{'\0', NULL}
 	};
 	va_list valist;
@@ -23,17 +22,31 @@ int _printf(const char *format, ...)
 		{
 			if (format[a] == '%')
 			{
-				a++;
-				for (b = 0; func[b].let; b++)
+				if (format[a + 1] == '%')
 				{
-					if (format[a] == func[b].let)
-					{
-						t += func[b].f(valist);
-						break;
-					}
+					write(1, "%", 1);
+					t++;
+					a++;
 				}
-				if (!func[b].let)
-					return (-1);
+				else if (format[a + 1] == 10)
+				{
+					write(1, "%", 1);
+					t++;
+				}
+				else
+				{
+					for (b = 0; func[b].let; b++)
+					{
+						if (format[a + 1] == func[b].let)
+						{
+							t += func[b].f(valist);
+							a++;
+							break;
+						}
+					}
+					if (!func[b].let)
+						return (-1);
+				}
 			}
 			else
 			{

@@ -27,7 +27,7 @@ int ps(va_list s)
 	st = va_arg(s, char *);
 	if (!st)
 		st = "(null)";
-	for (t = 0; st[t]; t++)
+	for (t = 0; st[t] != '\0'; t++)
 		write(1, &st[t], 1);
 	return (t);
 }

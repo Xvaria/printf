@@ -19,6 +19,8 @@ typedef struct print_s
 
 int _printf(const char *format, ...);
 
+int (*funcstruct(char c))(va_list);
+
 int pc(va_list);
 
 int ps(va_list);
