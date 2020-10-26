@@ -11,7 +11,7 @@ int pc(va_list c)
 
 	a = va_arg(c, int);
 	write(1, &a, 1);
-	return(1);
+	return (1);
 }
 
 /**
@@ -39,5 +39,5 @@ int ps(va_list s)
 int pp(void)
 {
 	write(1, "%", 1);
-	return(1);
+	return (1);
 }
