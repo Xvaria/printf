@@ -32,6 +32,8 @@ int _printf(const char *format, ...)
 						break;
 					}
 				}
+				if (!func[b].let)
+					return (-1);
 			}
 			else
 			{
@@ -42,5 +44,5 @@ int _printf(const char *format, ...)
 		va_end(valist);
 		return (t);
 	}
-	return (0);
+	return (-1);
 }
