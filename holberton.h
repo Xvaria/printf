@@ -6,11 +6,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * struct print_s - array of functions
+ * @let: characters
+ * @f: functions
+ */
 typedef struct print_s
 {
 	char let;
 	int (*f)();
-}print_t;
+} print_t;
 
 int _printf(const char *format, ...);
 
