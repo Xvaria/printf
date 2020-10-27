@@ -21,10 +21,10 @@ int _printf(const char *format, ...);
 
 int (*funcstruct(char c))(va_list);
 
-int pc(va_list);
+int print_char(va_list);
 
-int ps(va_list);
+int print_string(va_list);
 
-int pp(void);
+int print_per(void);
 
 #endif
