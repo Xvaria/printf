@@ -57,14 +57,13 @@ int _printf(const char *format, ...)
 					a++;
 					break;
 				}
-			}
-			if (!f)
-			{
-				write(1, &format[a], 1);
-				t++;
+				else
+				{
+					write(1, &format[a], 1);
+					t++;
+				}
 			}
 		}
-		
 		else
 		{
 			write(1, &format[a], 1);
