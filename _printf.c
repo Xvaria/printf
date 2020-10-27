@@ -8,8 +8,8 @@
 int (*funcstruct(char c))(va_list)
 {
 	print_t func[] = {
-		{'c', pc},
-		{'s', ps},
+		{'c', print_char},
+		{'s', print_string},
 		{'\0', NULL}
 	};
 	unsigned int i = 0;
