@@ -1,19 +1,38 @@
 #include "holberton.h"
 
 /**
- * _printf - print all types of data
- * @format: list of arguments to print
- * Return: t or -1
+ *funcstruct - Selects function
+ *@c: char
+ *Return: Pointer to function
  */
-int _printf(const char *format, ...)
+int (*funcstruct(char c))(va_list)
 {
         print_t func[] = {
                 {'c', pc},
                 {'s', ps},
                 {'\0', NULL}
         };
+        unsigned int i = 0;
+
+        for (; func[i].let; i++)
+        {
+                if (c == func[i].let)
+                {
+                        return (func[i].f);
+                }
+        }
+        return (NULL);
+}
+/**
+ * _printf - print all types of data
+ * @format: list of arguments to print
+ * Return: t or -1
+ */
+int _printf(const char *format, ...)
+{
         va_list valist;
-        int t = 0, a, b;
+        int t = 0, a;
+	int(*f)(va_list);
 
 	va_start(valist, format);
         if (!format || (format[0] == '%' && format[1] == '\0'))
@@ -30,22 +49,22 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				for (b = 0; func[b].let; b++)
+				f = funcstruct(format[a + 1]);
+				
+				if (f)
 				{
-					if (format[a + 1] == func[b].let)
-					{
-						t += func[b].f(valist);
-						a++;
-						break;
-					}
-				}
-				if (!func[b].let)
-				{
-					write(1, &format[a], 1);
-					t++;
+					t += f(valist);
+					a++;
+					break;
 				}
 			}
+			if (!f)
+			{
+				write(1, &format[a], 1);
+				t++;
+			}
 		}
+		
 		else
 		{
 			write(1, &format[a], 1);
@@ -55,3 +74,4 @@ int _printf(const char *format, ...)
 	va_end(valist);
 	return (t);
 }
+
