@@ -38,6 +38,11 @@ The \fIconst char *\fR argument is expected to be a pointer to an array of chara
 % - %
 If after the \fIFORMAT\fR is another '%' the function just print the percent in the output console
 
+.TP
+.B
+% - i/d
+The int argument is converted to signal decimal notation
+
 
 
 .SH OBJECT
@@ -86,10 +91,10 @@ T{
 T}@int print_string(va_list s)@First commit
 T{
 \(aqd\(aq
-T}@team3_value1, team3_value2@Second commit
+T}@int print_int(va_list d)@Second commit
 T{
 \(aqi\(aq
-T}@team4_value1, team4_value2@Second commit
+T}@int print_int(va_list d)@Second commit
 .TE
 
 .TP
@@ -102,7 +107,7 @@ The \fBformater\fP, identifies the "char[x]" after the universal \fBFORMAT(%)\fP
 
 .SH AUTHOR
 .PP
-Written by Jose N. Soler
+Written by Jose Nicolas Soler
 
 
 .SH REPORTING BUGS
@@ -121,7 +126,7 @@ Size of bytes used on execution
 .TP
 .B
 -1
-\fIFORMAT\fP argument is NULL or empty, execution error
+\fBFORMAT\fP and/or \fIformater\fP argument is NULL or empty, execution error
 
 
 .SH SEE ALSO
