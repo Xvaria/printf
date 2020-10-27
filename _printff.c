@@ -1,13 +1,13 @@
 #include "holberton.h"
 
 /**
- * pc - write in standar output a char
+ * print_char - write in standar output a char
  * @c: character
  * Return: 1
  */
-int pc(va_list c)
+int print_char(va_list c)
 {
-	char a;
+	unsigned char a;
 
 	a = va_arg(c, int);
 	write(1, &a, 1);
@@ -15,11 +15,11 @@ int pc(va_list c)
 }
 
 /**
- * ps - write in standar output a string
+ * print_string - write in standar output a string
  * @s: string
  * Return: t
  */
-int ps(va_list s)
+int print_string(va_list s)
 {
 	int t;
 	char *st;
@@ -33,10 +33,10 @@ int ps(va_list s)
 }
 
 /**
- * pp - write in standar output a %
+ * print_per - write in standar output a %
  * Return: 1
  */
-int pp(void)
+int print_per(void)
 {
 	write(1, "%", 1);
 	return (1);
