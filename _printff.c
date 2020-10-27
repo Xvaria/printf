@@ -79,11 +79,9 @@ int print_int(va_list d)
 			copy = num;
 			copydec = num;
 		}
-		while (copydec >= 10)
-		{
+		for(x = 1; (copydec / 10) > 0; x++)
 			copydec /= 10;
-			x++;
-		}
+		   
 		for (y = x; y > 1; y--)
 			decimal *= 10;
 		for (y = 1; y <= x; y++)
