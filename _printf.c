@@ -55,7 +55,6 @@ int _printf(const char *format, ...)
 				{
 					t += f(valist);
 					a++;
-					break;
 				}
 				else
 				{
