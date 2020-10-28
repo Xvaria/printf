@@ -17,7 +17,7 @@ int print_char(va_list c)
 /**
  * print_string - write in standar output a string
  * @s: string
- * Return: t
+ * Return: Number of bytes
  */
 int print_string(va_list s)
 {
@@ -35,7 +35,7 @@ int print_string(va_list s)
 /**
  * print_int - write in standar output a integer
  * @d: integer to print
- * Return: nbytes to size of bytes
+ * Return: t to size of bytes
  */
 
 int print_int(va_list d)
@@ -43,20 +43,20 @@ int print_int(va_list d)
 	int num = va_arg(d, int);
 	int count_dec = 0, decimal = 1;
 	int y, ascii_num;
-	int nbytes = 0;
+	int t = 0;
 	unsigned int copy;
 
 
 	if (!num)
 	{
 		_putchar('0');
-		nbytes++;
-		return (nbytes);
+		t++;
+		return (t);
 	}
 	if (num < 0)
 	{
 		_putchar('-');
-		nbytes++;
+		t++;
 		num *= -1;
 	}
 
@@ -75,8 +75,8 @@ int print_int(va_list d)
 	{
 		ascii_num = ((copy / decimal) % 10) + '0';
 		_putchar(ascii_num);
-		nbytes++;
+		t++;
 		decimal /= 10;
 	}
-	return (nbytes);
+	return (t);
 }
