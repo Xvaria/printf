@@ -9,7 +9,7 @@
 
 int _putchar(char c)
 {
-	return(write(1, &c, 1));
+	return (write(1, &c, 1));
 }
 
 /**
@@ -46,55 +46,49 @@ int print_string(va_list s)
 
 /**
  * print_int - write in standar output a integer
- * Return: 1
+ * @d: integer to print
+ * Return: nbytes to size of bytes
  */
 
 int print_int(va_list d)
 {
 	int num = va_arg(d, int);
-	int x = 1, decimal = 1;
-	int y;
-	int nbytes = 1;
-	unsigned int copy = num, copydec = num;
+	int count_dec = 0, decimal = 1;
+	int y, ascii_num;
+	int nbytes = 0;
+	unsigned int copy, copydec = num;
 
 
-	if(!num)
+	if (!num)
 	{
 		_putchar('0');
+		nbytes++;
 		return (nbytes);
 	}
-	if (num >= 0 && num <= 9)
-		_putchar('0' + num);
-	else if (num < 0 && num >= -9)
+	if (num < 0)
 	{
-		num *= -1;
-		nbytes++;
 		_putchar('-');
-		_putchar('0' + num);
+		nbytes++;
+		num *= -1;
 	}
-	else
+
+	copy = num;
+
+	while (num)
 	{
-		if (num <= -10)
-		{
-			num *= -1;
-			nbytes = 1;
-			_putchar('-');
-			copy = num;
-			copydec = num;
-		}
-		for(x = 1; (copydec / 10) > 0; x++)
-			copydec /= 10;	   
-		for (y = x; y > 1; y--)
-			decimal *= 10;
-		for (y = 1; y <= x; y++)
-		{
-			copydec = copy / decimal;
-			copy = copy - (copydec * decimal);
-			decimal /= 10;
-			_putchar('0' + copydec);
-		}
+		num /= 10;
+		count_dec++;
 	}
-	if (nbytes == 1)
-		return(x + 1);
-	return (x);
+	/*y is for iterate and create decimal length */
+	for (y = 1; y < count_dec; y++)
+		decimal *= 10;
+
+	for (y = 0; y < count_dec; y++)
+	{
+		ascii_num = ((copy / decimal) % 10) + '0';
+		_putchar(ascii_num);
+		nbtyes++;
+		decimal /= 10;
+	}
+	return (nbytes);
 }
