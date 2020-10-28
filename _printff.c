@@ -1,17 +1,5 @@
 #include "holberton.h"
 
-
-/**
- * _putchar - writes a character c to stdout
- * @c: character
- * Return: write c
- */
-
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
 /**
  * print_char - write in standar output a char
  * @c: character
@@ -56,7 +44,7 @@ int print_int(va_list d)
 	int count_dec = 0, decimal = 1;
 	int y, ascii_num;
 	int nbytes = 0;
-	unsigned int copy, copydec = num;
+	unsigned int copy;
 
 
 	if (!num)
