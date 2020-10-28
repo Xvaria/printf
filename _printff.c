@@ -75,7 +75,7 @@ int print_int(va_list d)
 	{
 		ascii_num = ((copy / decimal) % 10) + '0';
 		_putchar(ascii_num);
-		nbtyes++;
+		nbytes++;
 		decimal /= 10;
 	}
 	return (nbytes);
