@@ -6,6 +6,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+
 int _putchar(char c);
 
 /**
@@ -19,12 +26,20 @@ typedef struct print_s
 	int (*f)();
 } print_t;
 
+/**
+ * _printf - print all types of data
+ * @format: list of arguments to print
+ * Return: t or -1
+ */
+
 int _printf(const char *format, ...);
 
 int (*funcstruct(char c))(va_list);
 
 int print_char(va_list);
+
 int print_string(va_list);
+
 int print_int(va_list);
 
 
