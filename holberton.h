@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int _putchar(char c);
+
 /**
  * struct print_s - array of functions
  * @let: characters
@@ -21,7 +23,6 @@ int _printf(const char *format, ...);
 
 int (*funcstruct(char c))(va_list);
 
-int _putchar(char c);
 int print_char(va_list);
 int print_string(va_list);
 int print_int(va_list);
