@@ -12,6 +12,7 @@ int (*funcstruct(char c))(va_list)
 		{'s', print_string},
 		{'i', print_int},
 		{'d', print_int},
+		{'r', print_reversed},
 		{'\0', NULL}
 	};
 	unsigned int i = 0;
