@@ -42,5 +42,6 @@ int print_string(va_list);
 
 int print_int(va_list);
 
+int print_reversed(va_list);
 
 #endif
