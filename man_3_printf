@@ -1,7 +1,7 @@
 ." Process this file with
 ." groff -man -Tascii test_script.1
 ."
-.TH _PRINTF "1" "October 2020" "Holberton School CH13" "User Commands"
+.TH _PRINTF "3" "October 2020" "Holberton School CH13" "User Commands"
 
 .SH NAME
 .B _printf
@@ -14,7 +14,7 @@
 
 .SH DESCRIPTION
 .PP
-Print ARGUMENT(s) according to FORMAT
+Print ARGUMENT(s) according to FORMAT.
 
 .TP
 .B 
@@ -26,24 +26,43 @@ These \fIformater\fR especifies the output way of a variable or the same FORMAT 
 .TP
 .B
 % - c
-Write in the output console a int argument converted to an unsigned char
+Write in the output console a int argument converted to an unsigned char.
 
 .TP
 .B
 % - s
-The \fIconst char *\fR argument is expected to be a pointer to an array of character type(pointer to an string). Characters from the array are written up to
+The \fIconst char *\fR argument is expected to be a pointer to an array of character type(pointer to an string). Characters from the array are written up to.
 
 .TP
 .B
 % - %
-If after the \fIFORMAT\fR is another '%' the function just print the percent in the output console
+If after the \fIFORMAT\fR is another '%' the function just print the percent in the output console.
 
 .TP
 .B
 % - i/d
-The int argument is converted to signal decimal notation
+The int argument is converted to signal decimal notation.
+
+.TP
+.B
+% - u
+If a int argument is passed, the program will attemp to convert it on a \fIunsigned int\fP, and will be printed in format of unsigned decimal.
+
+.TP
+.B
+% - o
+If a int argument is passed, the program will attemp to convert it on a \fIunsigned int\fP, and will be printed in format of unsigned octal format.
 
 
+.TP
+.B
+% - X/x
+If a int argument is passed, the program will attemp to convert it on a \fIunsigned int\fP, and will be printed in format of unsigned hexadecimal in lowercase\fB(x)\fP, or unsigned hexadecimal in uppercase \fB(X)\fP.
+
+
+.SS Return value
+In successful return, these functions return the number of characters \fB(nbytes)\fP
+printed (excluding the null byte used to end output to strings)
 
 .SH OBJECT
 
@@ -79,22 +98,41 @@ Char let @ Int (*f)()
 .RS 0.2i
 
 .TS
-tab (@);
-c c c.
-formater@Function@Comment
+tab (@), box;
+c | c | l.
+formater@Function@Output format
 _
 T{
 \(aqc\(aq
-T}@int print_char(va_list c)@First commit @
+T}@int print_char(va_list c)@Char @
+_
 T{
 \(aqs\(aq
-T}@int print_string(va_list s)@First commit
+T}@int print_string(va_list s)@String
+_
 T{
 \(aqd\(aq
-T}@int print_int(va_list d)@Second commit
+T}@int print_int(va_list d)@Integer on decimal
+_
 T{
 \(aqi\(aq
-T}@int print_int(va_list d)@Second commit
+T}@int print_int(va_list d)@Integer
+_
+T{
+\(aqu\(aq
+T}@int print_unsigned_u(va_list d)@Unsigned int
+_
+T{
+\(aqo\(aq
+T}@int print_unsigned_o(va_list d)@Format octal
+_
+T{
+\(aqx\(aq
+T}@int print_unsigned_x(va_list d)@Hex lowercase format
+_
+T{
+\(aqX\(aq
+T}@int print_unsigned_X(va_list d)@Hex uppercase format
 .TE
 
 .TP
@@ -103,12 +141,122 @@ T}@int print_int(va_list d)@Second commit
 .RE
 .PP
 
-The \fBformater\fP, identifies the "char[x]" after the universal \fBFORMAT(%)\fP, passed to analize and execute the function with the list of arguments passed by (va_list) 
+The \fBformater\fP, identifies the "char[x]" after the universal \fBFORMAT(%)\fP, passed to analize and execute the function with the list of arguments passed by (va_list). 
 
-.SH AUTHOR
+If the number of \fBFORMAT(%)\fP invocation doesn't match with the number of arguments passed on \fR[...\fR], the program will take and print only the arguments to fill.
+
 .PP
-Written by Jose Nicolas Soler
+.PP
 
+.SH EXAMPLE
+
+.PP
+The function _printf start analyzing the format input like an array, and every position is a single letter, on the presence in a "n" position with universal symbol\fB(%)\fP, makes a call to \fIint (*funcstruct(char c))(va_list);\fP 
+
+.nf
+-------------------------------------------
+/*Lets suppose we invoke:*/
+/*_printf("This is a character %c", 'H')*/
+-------------------------------------------
+int _printf(const char *format, ...)
+{
+    va_list valist;
+    int t = 0, a;
+    int (*f)(va_list);
+
+    va_start(valist, format);
+
+    /*Edge case assumption*/
+    if (!format || (format[0] == '%' && format[1] == '\0'))
+        return (-1);
+
+	
+    /*Start iterate over the FORMAT array on every position*/
+    for (a = 0; format[a]; a++)
+    {      	 
+
+        /*in a coincidence of the unversal symbol(%)*/
+        if (format[a] == '%')
+        {  	
+               /*if the second argument is another %*/ 
+               /*print only "%"*/
+             if (format[a + 1] == '%')
+             {
+                  write(1, &format[a], 1);
+                  t++;
+                  a++;
+             }
+             else
+             {
+                 /*CALL TO THE FUNCTION (funcstruct) WITH*/
+                 /*PARAMETER AFTER SYMBOL "%"*/
+                  f = funcstruct(format[a + 1]);
+
+                  if (f)
+                  {
+                         t += f(valist);
+                         a++;
+                  }
+                  else
+                  {
+                         write(1, &format[a], 1);
+                         t++;
+                  }
+              }
+          }
+          else
+          {
+               /*Just print in the order of the array FORMAT*/
+               write(1, &format[a], 1);
+
+               t++;
+           }
+	}
+        va_end(valist);
+        
+        /*return nbytes used in printer*/
+        return (t);
+}
+
+
+.PP
+Then, after the call of (funcstruct), analize the \fIformater\fP after the universal simbol of \fBFORMAT(%)\fP, and assign it to his second structure date, the function corresponding to the action required   
+
+.nf
+#include "holberton.h"
+
+int (*funcstruct(char c))(va_list)
+{
+   /*Estructure that links a char(formater), to a function*/
+
+        print_t func[] = {
+                {'c', print_char},
+                {'s', print_string},
+                {'i', print_int},
+                {'d', print_int},
+                {'u', print_unsigned_u},
+                {'o', print_unsigned_o},
+                {'x', print_unsigned_x},
+                {'X', print_unsigned_X},
+                {'\0', NULL}
+        };
+
+        unsigned int i = 0;
+
+    /*Iterate over the structure*/
+        for (; func[i].let; i++)
+        {
+
+    /*in a coincidence with the formater passed "c"*/
+    /*acces to his second structure linked data "f" and return it*/
+                if (c == func[i].let)
+                {
+                        return (func[i].f);
+                }
+
+        }
+        return (NULL);
+}
 
 .SH REPORTING BUGS
 .PP

@@ -81,6 +81,7 @@ int print_int(va_list d)
 	return (t);
 }
 
+
 /**
  * print_reversed - write in standar output a reversed string
  * @s: string
@@ -103,3 +104,4 @@ int print_reversed(va_list s)
 	}
 	return (t);
 }
+
