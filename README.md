@@ -1,6 +1,6 @@
 # OUR OWN PRINTF FUNCTIONS (_printf)
 
-[![N|Solid](https://camo.githubusercontent.com/606b1bb31bbd10ccc8c596ce5decaf9e03f85c44/68747470733a2f2f686f6c626572746f6e7363686f6f6c2d626c6f672e73332e616d617a6f6e6177732e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031352f30392f32393132353730342f686f6c626572746f6e2d6c6f676f2d37313234336430333162316235346132613539613763653730306432353239666438616431343836343739393037336461323935363966623864346238393235312e706e67)](https://nodesource.com/products/nsolid)
+[![N|Solid](https://camo.githubusercontent.com/606b1bb31bbd10ccc8c596ce5decaf9e03f85c44/68747470733a2f2f686f6c626572746f6e7363686f6f6c2d626c6f672e73332e616d617a6f6e6177732e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031352f30392f32393132353730342f686f6c626572746f6e2d6c6f676f2d37313234336430333162316235346132613539613763653730306432353239666438616431343836343739393037336461323935363966623864346238393235312e706e67)](http://www.holbertonschool.com/)
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 
@@ -31,7 +31,10 @@ This is a list of the possibles matches in the "formater" char:
 * %-x : If a int argument is passed, the program will attemp to convert it on a unsigned int, and will be printed in format of unsigned Hexadecimal lowercase format.
 * %-X : If a int argument is passed, the program will attemp to convert it on a unsigned int, and will be printed in format of unsigned Hexadecimal lowercase format.
 * %-r : The function will change the order to be printed out, reversing the given argument in the standard outpu
-### Flowchar
+### Flowchart
+
+![N|Solid](https://i.postimg.cc/Q88nSV2j/Untitled-Document-1.png)
+
 ### Example
 ```c
 #include "holberton.h"
@@ -81,10 +84,11 @@ You could build this program in another environment or O.S., but, could present 
  - Diego Ahumada: [@Xvaria](https://www.github.com/Xvaria)
  - Andres Sotelo: [@ANDRESOTELO](https://www.github.com/ANDRESOTELO)
 License
-----
+-----
 MIT - Holberton School
 Data-time
 -----
 - October 29 2020
 - Cohort 13
+-----
 **Holberton School CH13!**
