@@ -96,7 +96,7 @@ int print_reversed(va_list s)
 	{
 		t++;
 	}
-	for (; b >= 0; b--)
+	for (b = b - 1; b >= 0; b--)
 	{
 		p = st[b];
 		_putchar(p);
