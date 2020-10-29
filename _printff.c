@@ -89,7 +89,7 @@ int print_int(va_list d)
 int print_reversed(va_list s)
 {
 	int t = 0, b;
-	char *st;
+	char *st, p;
 
 	st = va_arg(s, char *);
 	for (b = 0; st[b] != '\0'; b++)
@@ -98,7 +98,8 @@ int print_reversed(va_list s)
 	}
 	for (; b >= 0; b--)
 	{
-		_putchar(st[b]);
+		p = st[b];
+		_putchar(p);
 	}
 	return (t);
 }
