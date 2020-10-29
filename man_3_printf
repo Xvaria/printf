@@ -59,6 +59,11 @@ If a int argument is passed, the program will attemp to convert it on a \fIunsig
 % - X/x
 If a int argument is passed, the program will attemp to convert it on a \fIunsigned int\fP, and will be printed in format of unsigned hexadecimal in lowercase\fB(x)\fP, or unsigned hexadecimal in uppercase \fB(X)\fP.
 
+.TP
+.B
+% - r
+The argument changes the order for be printed out, reversing the given argument in the standard
+
 
 .SS Return value
 In successful return, these functions return the number of characters \fB(nbytes)\fP
@@ -133,6 +138,10 @@ _
 T{
 \(aqX\(aq
 T}@int print_unsigned_X(va_list d)@Hex uppercase format
+_
+T{
+\(aqr\(aq
+T}@int print_reversed(va_list d)@Print in reverse
 .TE
 
 .TP
