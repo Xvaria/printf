@@ -92,15 +92,13 @@ int print_reversed(va_list s)
 	char *st;
 
 	st = va_arg(s, char *);
-	if (!st)
-		st = "(null)";
 	for (b = 0; st[b] != '\0'; b++)
 	{
+		t++;
 	}
 	for (; b >= 0; b--)
 	{
 		_putchar(st[b]);
-		t++;
 	}
 	return (t);
 }
