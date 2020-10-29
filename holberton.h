@@ -37,17 +37,21 @@ int _printf(const char *format, ...);
 int (*funcstruct(char c))(va_list);
 
 int print_char(va_list);
+
 int print_string(va_list);
 
 int print_int(va_list);
 
 int print_unsigned_u(va_list);
+
 int print_unsigned_o(va_list);
+
 int print_unsigned_x(va_list);
+
 int print_unsigned_X(va_list);
 
 int print_reversed(va_list);
 
-
+int print_bin(va_list);
 
 #endif
