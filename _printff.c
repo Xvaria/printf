@@ -80,3 +80,27 @@ int print_int(va_list d)
 	}
 	return (t);
 }
+
+/**
+ * print_reversed - write in standar output a reversed string
+ * @s: string
+ * Return: Number of bytes
+ */
+int print_reversed(va_list s)
+{
+	int t = 0, b;
+	char *st;
+
+	st = va_arg(s, char *);
+	if (!st)
+		st = "(null)";
+	for (b = 0; st[b] != '\0'; b++)
+	{
+	}
+	for (; b >= 0; b--)
+	{
+		_putchar(st[b]);
+		t++;
+	}
+	return (t);
+}
